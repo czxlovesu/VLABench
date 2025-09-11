@@ -367,3 +367,14 @@ class OrCondition(Condition):
     
     def is_met(self, physics=None):
         return any([condition_set.is_met(physics) for condition_set in self.condition_sets])
+
+@register.add_condition("always_true")
+class AlwaysTrueCondition(Condition):
+    """
+    A simple condition that always returns True - useful for observation/testing tasks
+    """
+    def __init__(self, **kwargs):
+        pass
+    
+    def is_met(self, physics=None):
+        return True

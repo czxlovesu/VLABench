@@ -1,8 +1,9 @@
-N_SAMPLE=10
+N_SAMPLE=5
 OFFSET=0
  
-task_names=("select_toy" "select_fruit" ) # add more task here
-save_dir="/Your/path/to/trajectory/dataset"
+task_names=("sd_card_disposal" ) # add more task here
+save_dir="vlabench_dataset"
+# /home/vla/Downloads/VLABench/vlabench_dataset
 
 for task_name in "${task_names[@]}"; do # add more process here
     commands=(

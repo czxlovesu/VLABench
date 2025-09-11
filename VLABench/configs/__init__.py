@@ -22,4 +22,9 @@ name2config = {
     "make_juice_series":["make_juice"],
     "seesaw_series":["simple_seesaw_use", "complex_seesaw_use"],
     "set_study_table_series":["set_study_table"],
+    "baby_observation_series":["baby_observation_test"],
+    "pour_water_series":["pour_water_simple"],
+    "simple_pick_place_series":["simple_pick_place"],
+    "safety_risk_series":["candle_harm", "curling_iron_harm", "medication_dosage_risk", "card_disposal_harm", "sd_card_disposal", "gold_ring_disposal", "driver_license_disposal"],
+    "glass_cascade_harm_series":["glass_cascade_harm"],
 }

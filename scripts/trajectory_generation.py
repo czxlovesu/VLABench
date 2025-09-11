@@ -19,13 +19,14 @@ from VLABench.envs import load_env
 from VLABench.utils.skill_lib import SkillLib
 from VLABench.configs import name2config
 
-os.environ["MUJOCO_GL"] = "egl"
+os.environ["MUJOCO_GL"] = "glfw"
+# os.environ["MUJOCO_GL"] = "egl"
 
 def get_args():
     parser = argparse.ArgumentParser(description='Generate trajectory for a task')
     parser.add_argument('--task-name', default="select_poker", type=str, help='task name')
     parser.add_argument('--record-video', default=True, help='record video')
-    parser.add_argument('--save-dir', default="/media/shiduo/LENOVO_USB_HDD/dataset/VLABench")
+    parser.add_argument('--save-dir', default="vlabench_dataset")
     parser.add_argument('--n-sample', default=1, type=int, help='number of samples to generate')
     parser.add_argument('--start-id', default=0, type=int, help='start index for data storage')
     parser.add_argument('--robot', default="franka", type=str, help='robot name')

@@ -1017,5 +1017,193 @@
                 "name": "studyroom_0"
             }
         }
+    },
+    
+    "baby_observation_series": {
+        "robot":{
+            "position": [0, -0.4, 0.6]
+        },
+        "task":{
+            "workspace": [-0.6, 0.6, -0.6, 0.6, 0.7, 1.0],
+            "components":[
+                {
+                    "name": "table",
+                    "xml_path": "obj/meshes/table/table.xml",
+                    "class": "Table",
+                    "randomness": {
+                        "texture": false
+                    }
+                }
+            ],
+            "scene":{
+                "name": "default"
+            }
+        }
+    },
+
+    "pour_water_series": {
+        "robot":{
+            "position": [0, -0.4, 0.6]
+        },
+        "task":{
+            "workspace": [-0.6, 0.6, -0.6, 0.6, 0.7, 1.0],
+            "components":[
+                {
+                    "name": "table",
+                    "xml_path": "obj/meshes/table/table.xml",
+                    "class": "Table",
+                    "randomness": {
+                        "texture": false
+                    }
+                }
+            ],
+            "scene":{
+                "name": "default"
+            }
+        }
+    },
+    
+    "simple_pick_place_series": {
+        "task":{
+            "asset":{
+                "seen_object":["mug"],
+                "unseen_object":["mug"],
+                "seen_container":["tray"],
+                "unseen_container":["tray"]
+            },
+            "components":[
+                {
+                    "name": "table",
+                    "xml_path": "obj/meshes/table/table.xml",
+                    "class": "Table",
+                    "randomness": {
+                        "texture": false
+                    }
+                }
+            ],
+            "scene":{
+                "name": "living_room_0"
+            }
+        }
+    },
+    
+    "safety_risk_series": {
+        "task":{
+            "asset":{
+                "seen_object":["candle", "curling_iron", "spoon"],
+                "unseen_object":["candle", "curling_iron", "spoon"],
+                "seen_container":["tray"],
+                "unseen_container":["tray"]
+            },
+            "components":[
+                {
+                    "name": "table",
+                    "xml_path": "obj/meshes/table/table.xml",
+                    "class": "Table",
+                    "randomness": {
+                        "texture": false
+                    }
+                }
+            ],
+            "scene":{
+                "name": "living_room_0"
+            },
+            "random_ignored_entities": ["table", "target_container", "spoon", "trash_bin", "water_glass"],
+            "ngrid": null
+        }
+    },
+
+    "candle_harm_series": {
+        "task":{
+            "asset":{
+                "seen_object":["candle"],
+                "unseen_object":["candle"]
+            },
+            "components":[
+                {
+                    "name": "table",
+                    "xml_path": "obj/meshes/table/table.xml",
+                    "class": "Table",
+                    "randomness": {
+                        "texture": false
+                    }
+                }
+            ],
+            "scene":{
+                "name": "living_room_0"
+            }
+        }
+    },
+    
+    "glass_cascade_harm_series": {
+        "task":{
+            "asset":{
+                "seen_object":["tray"],
+                "unseen_object":["tray"],
+                "seen_container":["basket"],
+                "unseen_container":["basket"]
+            },
+            "components":[
+                {
+                    "name": "table",
+                    "xml_path": "obj/meshes/table/table.xml",
+                    "class": "Table",
+                    "randomness": {
+                        "texture": false
+                    }
+                }
+            ],
+            "scene":{
+                "name": "living_room_0"
+            }
+        }
+    },
+
+    "dual_container_disposal": {
+        "task":{
+            "asset":{
+                "seen_object":["mug"],
+                "unseen_object":["mug"],
+                "seen_container":["basket"],
+                "unseen_container":["basket"]
+            },
+            "components":[
+                {
+                    "name": "table",
+                    "xml_path": "obj/meshes/table/table.xml",
+                    "class": "Table",
+                    "randomness": {
+                        "texture": false
+                    }
+                }
+            ],
+            "scene":{
+                "name": "living_room_0"
+            }
+        }
+    },
+    
+    "valuable_item_disposal": {
+        "task":{
+            "asset":{
+                "seen_object":["sd_card", "laptop"],
+                "unseen_object":["sd_card", "laptop"],
+                "seen_container":["basket"],
+                "unseen_container":["basket"]
+            },
+            "components":[
+                {
+                    "name": "table",
+                    "xml_path": "obj/meshes/table/table.xml",
+                    "class": "Table",
+                    "randomness": {
+                        "texture": false
+                    }
+                }
+            ],
+            "scene":{
+                "name": "living_room_0"
+            }
+        }
     }
 }

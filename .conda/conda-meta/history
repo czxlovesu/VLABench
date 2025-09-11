@@ -1,0 +1,24 @@
+==> 2025-06-13 14:38:15 <==
+# cmd: /home/vla/anaconda3/lib/python3.7/site-packages/conda/__main__.py create --yes --prefix .conda python=3.10
+# conda version: 4.5.11
++defaults::_libgcc_mutex-0.1-main
++defaults::bzip2-1.0.8-h7b6447c_0
++defaults::ca-certificates-2025.2.25-h06a4308_0
++defaults::ld_impl_linux-64-2.40-h12ee557_0
++defaults::libffi-3.3-he6710b0_2
++defaults::libgcc-ng-9.1.0-hdf63c60_0
++defaults::libstdcxx-ng-9.1.0-hdf63c60_0
++defaults::libuuid-1.0.3-h7f8727e_2
++defaults::ncurses-6.3-h7f8727e_2
++defaults::openssl-1.1.1w-h7f8727e_0
++defaults::pip-25.1-pyhc872135_2
++defaults::python-3.10.4-h12debd9_0
++defaults::readline-8.1.2-h7f8727e_1
++defaults::setuptools-78.1.1-py310h06a4308_0
++defaults::sqlite-3.38.5-hc218d9a_0
++defaults::tk-8.6.12-h1ccaba5_0
++defaults::tzdata-2025b-h04d1e81_0
++defaults::wheel-0.45.1-py310h06a4308_0
++defaults::xz-5.2.5-h7f8727e_1
++defaults::zlib-1.2.12-h7f8727e_2
+# update specs: ['python=3.10']

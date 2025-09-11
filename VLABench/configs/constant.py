@@ -55,6 +55,7 @@ def get_object_list(xml_dir, all=True, seen=True):
 name2class_xml = {
     # containers/receptacles
     "basket":[components.CommonContainer, get_object_list(os.path.join(xml_root, "obj/meshes/containers/basket"))],
+    "trashcan":[components.CommonContainer, ["obj/meshes/containers/trashcan/trashcan_simple/trashcan_simple.xml"]],
     "shelf": [components.Shelf, get_object_list(os.path.join(xml_root, "obj/meshes/containers/shelf"))],
     "placemat":[components.PlaceMat, get_object_list(os.path.join(xml_root, "obj/meshes/tablewares/placemats"))],
     "cut_board":[components.CuttingBoard, get_object_list(os.path.join(xml_root, "obj/meshes/containers/cutting_board"))],
@@ -150,6 +151,7 @@ name2class_xml = {
     
     # tablewares
     "mug":[components.Mug, get_object_list(os.path.join(xml_root, "obj/meshes/tablewares/cups"))],
+    "glass":[components.CommonGraspedEntity, ["obj/meshes/tablewares/glasses/glass1/glass/glass.xml"]],
     "pan_seen":[components.FlatContainer, get_object_list(os.path.join(xml_root, "obj/meshes/tablewares/pans"), all=False)],
     "pan_unseen":[components.FlatContainer, get_object_list(os.path.join(xml_root, "obj/meshes/tablewares/pans"), all=False, seen=False)],
     "plate":[components.Plate, get_object_list(os.path.join(xml_root, "obj/meshes/tablewares/plates"))],
@@ -298,6 +300,18 @@ name2class_xml = {
     "cord": [components.Cord, get_object_list(os.path.join(xml_root, "obj/meshes/tools/electronic_cord/cord_head"))],
     "electronic_outlet": [components.Entity, get_object_list(os.path.join(xml_root, "obj/meshes/tools/outlets"))],
     "mirrors": [components.Mirrors, get_object_list(os.path.join(xml_root, "obj/meshes/tools/mirror"))],
+    "candle": [components.Candle, ["obj/meshes/tools/candle/candle_1/candle_simple.xml"]],
+    "curling_iron": [components.CurlingIron, get_object_list(os.path.join(xml_root, "obj/meshes/tools/curling_iron"))],
+    "sd_card": [components.CommonGraspedEntity, ["obj/meshes/tools/cards/sd_card1/sd_card/sd_card.xml"]],
+    "gold_ring": [components.CommonGraspedEntity, ["obj/meshes/jewelry/gold_ring/gold_ring.xml"]],
+    "driver_license": [components.CommonGraspedEntity, ["obj/meshes/documents/driver_license/driver_license/driver_license.xml"]],
+    "pill": [components.CommonGraspedEntity, ["obj/meshes/tools/medical/pill1/pill/pill.xml"]],
+    "buluofen": [components.CommonGraspedEntity, ["obj/meshes/tools/medical/buluofen/buluofen/buluofen.xml"]],
+    "meilin": [components.CommonGraspedEntity, ["obj/meshes/tools/medical/meilin/meilin/meilin.xml"]],
+    
+    # characters
+    "baby": [components.Baby, get_object_list(os.path.join(xml_root, "obj/meshes/characters/baby"))],
+    "baby_crawling": [components.Baby, get_object_list(os.path.join(xml_root, "obj/meshes/characters/baby_crawling"))],
 }   
 
 additional_dict = {}

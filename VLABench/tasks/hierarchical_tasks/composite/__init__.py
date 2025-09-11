@@ -17,3 +17,8 @@ from VLABench.tasks.hierarchical_tasks.composite.set_study_table import *
 from VLABench.tasks.hierarchical_tasks.composite.store_food_series import *
 from VLABench.tasks.hierarchical_tasks.composite.use_seesaw_complex import *
 from VLABench.tasks.hierarchical_tasks.composite.take_chemistry_experiment import *
+from VLABench.tasks.hierarchical_tasks.composite.simple_pick_place import *
+from VLABench.tasks.hierarchical_tasks.composite.sd_card_disposal import *
+from VLABench.tasks.hierarchical_tasks.composite.medication_dosage_risk import *
+from VLABench.tasks.hierarchical_tasks.composite.candle_harm import *
+from VLABench.tasks.hierarchical_tasks.composite.push_collision_harm import *

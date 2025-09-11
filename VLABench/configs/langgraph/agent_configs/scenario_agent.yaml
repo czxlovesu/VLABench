@@ -1,0 +1,9 @@
+# VLABench/configs/langgraph/agent_configs/scenario_agent.yaml
+scenario_name: "custom_scenario_01"
+background_texture: "parquet_floor"
+object_classes: ["cabinet", "drawer", "microwave"]
+# Optional: External API settings
+external_api:
+  tripo_ai:
+    enabled: false
+    prompt: "A modern, minimalist kitchen."

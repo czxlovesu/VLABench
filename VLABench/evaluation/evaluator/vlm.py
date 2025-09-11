@@ -99,7 +99,7 @@ class VLMEvaluator(Evaluator):
 
         input_pic = input_pic_path
         input_pic_gt = input_pic_gt_path
-        input_instruction = input_instruction = open(input_instruction_path, 'r', encoding='utf-8').read()
+        input_instruction = open(input_instruction_path, 'r', encoding='utf-8').read()
 
         return input_pic, input_pic_gt, input_instruction
     
