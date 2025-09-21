@@ -1,0 +1,54 @@
+# Task Generation Agent Configuration
+# Phase 1: Hardcoded task generation without LLM integration
+
+# Task definition
+task_type: "primitive"  # Options: "primitive", "composite"
+task_name: "pick_place_fruit"  # Custom task name for LangGraph-generated task
+
+# Task parameters
+task_params:
+  # Number of objects in the scene
+  num_objects: [3, 4]
+  
+  # Task difficulty
+  difficulty: "easy"  # Options: "easy", "medium", "hard"
+  
+  # Success criteria
+  success_type: "contain"  # Options: "contain", "grasp", "press", "align"
+
+# Instruction generation settings (Phase 1: template-based)
+instruction:
+  style: "simple"  # Options: "simple", "detailed", "spatial", "semantic"
+  language: "en"  # Language for instructions
+  
+# LLM settings (Phase 2+: will be enabled)
+llm_model: null  # Options: "openai_gpt4o", "anthropic_claude", etc.
+instruction_template_path: null  # Path to instruction templates
+
+# Code generation settings
+code_generation:
+  # Whether to include comments in generated code
+  include_comments: true
+  
+  # Whether to add debug logging
+  include_debug: false
+  
+  # Import optimization
+  optimize_imports: true
+
+# Output settings
+output:
+  # Directory for generated task files
+  output_dir: "VLABench/tasks/hierarchical_tasks"
+  
+  # Whether to overwrite existing files
+  overwrite: false
+  
+  # Backup existing files before overwriting
+  backup: true
+
+# Debug settings
+debug:
+  verbose: true
+  validate_code: false  # Phase 2+: Validate generated Python code
+  dry_run: false  # If true, don't actually write files

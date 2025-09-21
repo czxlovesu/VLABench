@@ -18,7 +18,7 @@ from VLABench.tasks import *   # 关键：导入tasks注册信息
 
 # Set environment variables  
 os.environ["VLABENCH_ROOT"] = "/home/vla/Downloads/VLABench/VLABench"
-os.environ["MUJOCO_GL"] = "glfw"  # 可视化模式，不是headless
+os.environ["MUJOCO_GL"] = "egl"  # 可视化模式，不是headless
 
 def test_task_visual(task_name):
     """通用任务可视化测试"""

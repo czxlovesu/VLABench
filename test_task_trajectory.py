@@ -18,7 +18,7 @@ from VLABench.tasks import *   # Import tasks
 
 # Set environment variables
 os.environ["VLABENCH_ROOT"] = "/home/vla/Downloads/VLABench/VLABench"
-os.environ["MUJOCO_GL"] = "glfw"
+os.environ["MUJOCO_GL"] = "egl"
 
 def test_task_trajectory(task_name, max_skills=2):
     """测试任意任务的轨迹生成效果"""

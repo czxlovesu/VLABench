@@ -1,0 +1,6 @@
+enable_llm: false
+keyword_mapping_path: VLABench/configs/langgraph/keyword_mapping.yaml
+kitchen_priority:
+  - kitchen_0
+  - kitchen_2
+  - kitchen_1

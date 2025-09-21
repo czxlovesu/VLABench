@@ -1,0 +1,6 @@
+message: This is a placeholder trajectory file for Phase 1 testing
+num_episodes: 1
+original_path: VLABench/trajectories/select_fruit_trajectory.hdf5
+phase: '1'
+simulation_steps: 1000
+type: dummy_trajectory

@@ -1,0 +1,41 @@
+# Evaluation Agent Configuration
+# Phase 1: Basic evaluation without complex model checkpoints
+
+# Evaluation settings
+eval_track: "vla"  # Options: "vla" (Vision-Language-Action), "vlm" (Vision-Language Model)
+model_name: "random"  # Options: "random", "openvla", "gr00t", "openpi", etc.
+
+# Output configuration
+output_dir: "VLABench/eval_results"
+
+# Evaluation parameters
+n_episodes: 1  # Number of episodes to evaluate
+metrics:  # Metrics to compute
+  - "success_rate"
+  - "progress_score"
+  - "intention_score"
+
+# Model configuration (Phase 2+)
+model_ckpt: null  # Path to model checkpoint
+lora_ckpt: null  # Path to LoRA checkpoint
+
+# VLA-specific settings
+visualization: false  # Whether to save visualization
+max_substeps: 1  # Repeat steps in simulation
+
+# VLM-specific settings
+vlm_model: null  # VLM model name for evaluation
+
+# Remote server settings (for distributed evaluation)
+host: "localhost"
+port: 5555
+
+# Timeout settings (in seconds)
+timeout: 600  # 10 minutes timeout for evaluation
+
+# Debug settings
+debug: false
+verbose: true
+
+# Phase 1 specific
+use_dummy_evaluation: true  # Create dummy results when scripts are not available

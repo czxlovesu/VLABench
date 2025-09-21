@@ -1,0 +1,942 @@
+container_verbs:
+- close
+- in
+- inside
+- into
+- open
+- place
+- pour
+- put
+objects:
+  by_keyword:
+    baby: baby
+    basket: basket
+    knife: knife
+    microwave: microwave
+    plate: plate
+    small_fridge: small_fridge
+    tray: tray
+  object_defs:
+    a_tale_of_two_cities:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/a_tale_of_two_cities/a_tale_of_two_cities.xml
+      xml_dir: null
+    ace:
+      class: Toy
+      sample_xml: obj/meshes/toys/onepiece/ace/ace_0/ace_one_piece.xml
+      xml_dir: obj/meshes/toys/onepiece/ace
+    alcohol:
+      class: Drink
+      sample_xml: obj/meshes/drinks/alcohol/alcohol_2/model.xml
+      xml_dir: obj/meshes/drinks/alcohol
+    alien:
+      class: Toy
+      sample_xml: obj/meshes/toys/disney/toystory/alien/alien_0/toy_story_alien.xml
+      xml_dir: obj/meshes/toys/disney/toystory/alien
+    antman:
+      class: Toy
+      sample_xml: obj/meshes/toys/marvel/antman/antman_0/ant-man.xml
+      xml_dir: obj/meshes/toys/marvel/antman
+    apple:
+      class: Fruit
+      sample_xml: obj/meshes/fruit/apple/apple_2/model.xml
+      xml_dir: obj/meshes/fruit/apple
+    aquaman:
+      class: Toy
+      sample_xml: obj/meshes/toys/DC/aquaman/aquaman_0/fortnite_aquaman__chapter_2_season_3_bp_skin.xml
+      xml_dir: obj/meshes/toys/DC/aquaman
+    avocado:
+      class: Fruit
+      sample_xml: obj/meshes/fruit/avocado/avocado_4/model.xml
+      xml_dir: obj/meshes/fruit/avocado
+    baby:
+      class: Baby
+      sample_xml: obj/meshes/characters/baby/model_stable.xml
+      xml_dir: obj/meshes/characters/baby
+    baby_crawling:
+      class: Baby
+      sample_xml: obj/meshes/characters/baby_crawling/baby_crawling.xml
+      xml_dir: obj/meshes/characters/baby_crawling
+    bagel:
+      class: Bread
+      sample_xml: obj/meshes/breads/bagel/bagel_4/model.xml
+      xml_dir: obj/meshes/breads/bagel
+    bagged_food:
+      class: Snack
+      sample_xml: obj/meshes/snacks/bagged_food/bagged_food_11/model.xml
+      xml_dir: obj/meshes/snacks/bagged_food
+    baguette:
+      class: Bread
+      sample_xml: obj/meshes/breads/baguette/baguette_5/model.xml
+      xml_dir: obj/meshes/breads/baguette
+    banana:
+      class: Fruit
+      sample_xml: obj/meshes/fruit/banana/banana_14/model.xml
+      xml_dir: obj/meshes/fruit/banana
+    bar:
+      class: Snack
+      sample_xml: obj/meshes/snacks/bar/bar_11/model.xml
+      xml_dir: obj/meshes/snacks/bar
+    basket:
+      class: CommonContainer
+      sample_xml: obj/meshes/containers/basket/basket/basket.xml
+      xml_dir: obj/meshes/containers/basket
+    batman:
+      class: Toy
+      sample_xml: obj/meshes/toys/DC/batman/batman_0/batman.xml
+      xml_dir: obj/meshes/toys/DC/batman
+    bbq_sauce:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/bbq_sauce/bbq_sauce0/bbq_sauce.xml
+      xml_dir: obj/meshes/condiment/bbq_sauce
+    bbq_sauce_seen:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/bbq_sauce/bbq_sauce0/bbq_sauce.xml
+      xml_dir: obj/meshes/condiment/bbq_sauce
+    bbq_sauce_unseen:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/bbq_sauce/bbq_sauce0/bbq_sauce.xml
+      xml_dir: obj/meshes/condiment/bbq_sauce
+    beer:
+      class: Drink
+      sample_xml: obj/meshes/drinks/beer/beer_0/model.xml
+      xml_dir: obj/meshes/drinks/beer
+    bell_pepper:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/bell_pepper/bell_pepper_3/model.xml
+      xml_dir: obj/meshes/ingredients/bell_pepper
+    big_fridge:
+      class: Fridge
+      sample_xml: obj/meshes/containers/fridge/big_fridge/fridge_big/fridge.xml
+      xml_dir: obj/meshes/containers/fridge/big_fridge
+    billiards:
+      class: BilliardBall
+      sample_xml: obj/meshes/billiard_balls/billiards.xml
+      xml_dir: null
+    billiards_table:
+      class: BilliardTable
+      sample_xml: obj/meshes/containers/billiards_table/billiards_table.xml
+      xml_dir: obj/meshes/containers/billiards_table
+    biopolymer_composites_in_electronics:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/biopolymer_composites_in_electronics/biopolymer_composites_in_electronics.xml
+      xml_dir: null
+    bloom_flower:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/flowers/bloom_flower/sunflower/sunflower_2/sunflower_2.xml
+      xml_dir: obj/meshes/flowers/bloom_flower
+    boxed_food:
+      class: Snack
+      sample_xml: obj/meshes/snacks/boxed_food/macaroni_and_cheese/macaroni_and_cheese.xml
+      xml_dir: obj/meshes/snacks/boxed_food
+    bread:
+      class: Bread
+      sample_xml: obj/meshes/breads/bread/bread_1/model.xml
+      xml_dir: obj/meshes/breads/bread
+    broccoli:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/broccoli/broccoli_3/model.xml
+      xml_dir: obj/meshes/ingredients/broccoli
+    buluofen:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/tools/medical/buluofen/buluofen/buluofen.xml
+      xml_dir: null
+    button:
+      class: Button
+      sample_xml: null
+      xml_dir: null
+    buzz_lightyear:
+      class: Toy
+      sample_xml: obj/meshes/toys/disney/toystory/buzz_lightyear/buzz_lightyear_1/buzz_lightyear_toy_story_disney/buzz_lightyear_toy_story_disney.xml
+      xml_dir: obj/meshes/toys/disney/toystory/buzz_lightyear
+    cabinet:
+      class: ContainerWithDrawer
+      sample_xml: obj/meshes/containers/cabinets/short_cabinet/short_cabinet_fix.xml
+      xml_dir: obj/meshes/containers/cabinets
+    cake:
+      class: Dessert
+      sample_xml: obj/meshes/dessert/cake/cake_3/model.xml
+      xml_dir: obj/meshes/dessert/cake
+    candle:
+      class: Candle
+      sample_xml: obj/meshes/tools/candle/candle_1/candle_simple.xml
+      xml_dir: null
+    canned_food:
+      class: Snack
+      sample_xml: obj/meshes/snacks/canned_food/canned_food_9/model.xml
+      xml_dir: obj/meshes/snacks/canned_food
+    carrot:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/carrot/carrot_2/model.xml
+      xml_dir: obj/meshes/ingredients/carrot
+    century17_don_quixote_book:
+      class: Book
+      sample_xml: obj/meshes/books/books_time_order/Century17_Don_Quixote_Book/century17_don_quixote_book.xml
+      xml_dir: null
+    century17_romeo_and_juliet_book:
+      class: Book
+      sample_xml: obj/meshes/books/books_time_order/Century17_Romeo_and_Juliet_Book/century17_romeo_and_juliet_book.xml
+      xml_dir: null
+    century18_du_contrat_social_book:
+      class: Book
+      sample_xml: obj/meshes/books/books_time_order/Century18_Du_Contrat_Social_Book/century18_du_contrat_social_book.xml
+      xml_dir: null
+    century18_pride_and_prejudice_book:
+      class: Book
+      sample_xml: obj/meshes/books/books_time_order/Century18_Pride_and_Prejudice_Book/century18_pride_and_prejudice_book.xml
+      xml_dir: null
+    century19_boule_de_suif_book:
+      class: Book
+      sample_xml: obj/meshes/books/books_time_order/Century19_Boule_de_Suif_Book/century19_boule_de_suif_book.xml
+      xml_dir: null
+    century19_les_miserables_book:
+      class: Book
+      sample_xml: obj/meshes/books/books_time_order/Century19_Les_Misérables_Book/century19_les_misérables_book.xml
+      xml_dir: null
+    century20_the_metamorphosis_book:
+      class: Book
+      sample_xml: obj/meshes/books/books_time_order/Century20_The_Metamorphosis_Book/century20_the_metamorphosis_book.xml
+      xml_dir: null
+    century20_the_old_man_and_the_sea_book:
+      class: Book
+      sample_xml: obj/meshes/books/books_time_order/Century20_The_Old_Man_and_the_Sea_Book/century20_the_old_man_and_the_sea_book.xml
+      xml_dir: null
+    century21_harry_potter_and_the_chamber_of_secrets_book:
+      class: Book
+      sample_xml: obj/meshes/books/books_time_order/Century21_Harry_Potter_and_the_Chamber_of_Secrets_Book/century21_harry_potter_and_the_chamber_of_secrets_book.xml
+      xml_dir: null
+    century21_the_three_body_problem_book:
+      class: Book
+      sample_xml: obj/meshes/books/books_time_order/Century21_The_Three_Body_Problem_Book/century21_the_three_body_problem_book.xml
+      xml_dir: null
+    cheese:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/cheese/cheese_1/model.xml
+      xml_dir: obj/meshes/ingredients/cheese
+    chemistry_tube_stand:
+      class: TubeStand
+      sample_xml: obj/meshes/tube/tube_container/tube_stand.xml
+      xml_dir: null
+    chips:
+      class: Snack
+      sample_xml: obj/meshes/snacks/chips/chips_7/model.xml
+      xml_dir: obj/meshes/snacks/chips
+    chocolate:
+      class: Snack
+      sample_xml: obj/meshes/snacks/chocolate/chocolate_0/model.xml
+      xml_dir: obj/meshes/snacks/chocolate
+    chopper:
+      class: Toy
+      sample_xml: obj/meshes/toys/onepiece/chopper/chopper_2/tony_chopper.xml
+      xml_dir: obj/meshes/toys/onepiece/chopper
+    chopstick:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/tablewares/chopsticks/chopstick2/chopstick.xml
+      xml_dir: obj/meshes/tablewares/chopsticks
+    chrysanthemum:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/flowers/bloom_flower/chrysanthemum/chrysanthemum_2/chrysanthemum_2.xml
+      xml_dir: obj/meshes/flowers/bloom_flower/chrysanthemum
+    cloud_computing:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/cloud_computing/cloud_computing.xml
+      xml_dir: null
+    coffee_machine:
+      class: CoffeeMachine
+      sample_xml: obj/meshes/coffee_machines/delonghi_espresso_2/model.xml
+      xml_dir: obj/meshes/coffee_machines
+    cola:
+      class: Drink
+      sample_xml: obj/meshes/drinks/sota_drink/cola/cola_2/model.xml
+      xml_dir: obj/meshes/drinks/sota_drink/cola
+    contract_law_in_japan:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/contract_law_in_japan/contract_law_in_japan.xml
+      xml_dir: null
+    cooked_food:
+      class: Ingredient
+      sample_xml: obj/meshes/cooked_food/steak_15/model.xml
+      xml_dir: obj/meshes/cooked_food
+    cord:
+      class: Cord
+      sample_xml: obj/meshes/tools/electronic_cord/cord_head/cord.xml
+      xml_dir: obj/meshes/tools/electronic_cord/cord_head
+    corn:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/corn/corn_0/model.xml
+      xml_dir: obj/meshes/ingredients/corn
+    cotton_the_fabric_that_made_the_modern_world:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/cotton_the_fabric_that_made_the_modern_world/cotton_the_fabric_that_made_the_modern_world.xml
+      xml_dir: null
+    counter:
+      class: Counter
+      sample_xml: obj/meshes/counters/counter_0/counter.xml
+      xml_dir: obj/meshes/counters
+    critical_infrastructure_protection_in_homeland_security:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/critical_infrastructure_protection_in_homeland_security/critical_infrastructure_protection_in_homeland_security.xml
+      xml_dir: null
+    croissant:
+      class: Bread
+      sample_xml: obj/meshes/breads/croissant/croissant_3/model.xml
+      xml_dir: obj/meshes/breads/croissant
+    cucumber:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/cucumber/cucumber_2/model.xml
+      xml_dir: obj/meshes/ingredients/cucumber
+    cupcake:
+      class: Dessert
+      sample_xml: obj/meshes/dessert/cupcake/cupcake_19/model.xml
+      xml_dir: obj/meshes/dessert/cupcake
+    curling_iron:
+      class: CurlingIron
+      sample_xml: obj/meshes/tools/curling_iron/curling_iron_1/curling_iron.xml
+      xml_dir: obj/meshes/tools/curling_iron
+    cut_board:
+      class: CuttingBoard
+      sample_xml: obj/meshes/containers/cutting_board/cutting_board_2/model.xml
+      xml_dir: obj/meshes/containers/cutting_board
+    cybersecurity:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/cybersecurity/cybersecurity.xml
+      xml_dir: null
+    daisy:
+      class: Toy
+      sample_xml: obj/meshes/toys/disney/mickey/daisy/daisy_duck_0/game_cube_-_disneys_party_-_daisy_duck.xml
+      xml_dir: obj/meshes/toys/disney/mickey/daisy
+    daisy_flower:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/flowers/bloom_flower/daisy/daisy_1/daisy_1.xml
+      xml_dir: obj/meshes/flowers/bloom_flower/daisy
+    data_visualization:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/data_visualization/data_visualization.xml
+      xml_dir: null
+    dishes:
+      class: FlatContainer
+      sample_xml: obj/meshes/dishes/dish_without_plate_1/dish_without_plate_1.xml
+      xml_dir: obj/meshes/dishes
+    doctor_strange:
+      class: Toy
+      sample_xml: obj/meshes/toys/marvel/doctor_strange/doctor_strange_0/doctor_strangetexturedrigged.xml
+      xml_dir: obj/meshes/toys/marvel/doctor_strange
+    donald:
+      class: Toy
+      sample_xml: obj/meshes/toys/disney/mickey/donald/donald_0/donald.xml
+      xml_dir: obj/meshes/toys/disney/mickey/donald
+    donut:
+      class: Dessert
+      sample_xml: obj/meshes/dessert/donut/donut_13/model.xml
+      xml_dir: obj/meshes/dessert/donut
+    driver_license:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/documents/driver_license/driver_license/driver_license.xml
+      xml_dir: null
+    educated:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/educated/educated.xml
+      xml_dir: null
+    egg:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/egg/egg_10/model.xml
+      xml_dir: obj/meshes/ingredients/egg
+    eggplant:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/eggplant/eggplant_0/model.xml
+      xml_dir: obj/meshes/ingredients/eggplant
+    electron_transport_in_quantum_dots:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/electron_transport_in_quantum_dots/electron_transport_in_quantum_dots.xml
+      xml_dir: null
+    electronic_outlet:
+      class: Entity
+      sample_xml: obj/meshes/tools/outlets/simple_white/model.xml
+      xml_dir: obj/meshes/tools/outlets
+    engineering_biopolymers:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/engineering_biopolymers/engineering_biopolymers.xml
+      xml_dir: null
+    fish:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/fish/fish_4/model.xml
+      xml_dir: obj/meshes/ingredients/fish
+    flash_mx_bible:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/flash_mx_bible/flash_mx_bible.xml
+      xml_dir: null
+    flashman:
+      class: Toy
+      sample_xml: obj/meshes/toys/DC/flashman/flashman_0/flashinjustice_2_texturedrigged.xml
+      xml_dir: obj/meshes/toys/DC/flashman
+    flask:
+      class: CommonContainer
+      sample_xml: obj/meshes/tube/flask/flask.xml
+      xml_dir: null
+    fork:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/tablewares/forks/fork2/fork.xml
+      xml_dir: obj/meshes/tablewares/forks
+    foundamentals_of_molecular_biology:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/foundamentals_of_molecular_biology/foundamentals_of_molecular_biology.xml
+      xml_dir: null
+    fridge_open:
+      class: Fridge
+      sample_xml: obj/meshes/containers/fridge/fridge_open/fridge_open_0/mobility.xml
+      xml_dir: obj/meshes/containers/fridge/fridge_open
+    fruit:
+      class: Fruit
+      sample_xml: obj/meshes/fruit/peach/peach_6/model.xml
+      xml_dir: obj/meshes/fruit
+    garlic:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/garlic/garlic_5/model.xml
+      xml_dir: obj/meshes/ingredients/garlic
+    giftbox:
+      class: CommonContainer
+      sample_xml: obj/meshes/containers/boxes/giftbox/gitfbox_4/giftbox.xml
+      xml_dir: obj/meshes/containers/boxes/giftbox
+    glass:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/tablewares/glasses/glass1/glass/glass.xml
+      xml_dir: null
+    gold_ring:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/jewelry/gold_ring/gold_ring.xml
+      xml_dir: null
+    government_and_information_rights:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/government_and_information_rights/government_and_information_rights.xml
+      xml_dir: null
+    hammer:
+      class: Hammer
+      sample_xml: obj/meshes/tools/hammer/whole_hammer/hammer_2/hammer.xml
+      xml_dir: obj/meshes/tools/hammer/whole_hammer
+    hammer_handle:
+      class: HammerHandle
+      sample_xml: obj/meshes/tools/hammer/hammer_handle/hammer_handle_0/hammer_handle.xml
+      xml_dir: obj/meshes/tools/hammer/hammer_handle
+    hammer_head:
+      class: HammerHead
+      sample_xml: obj/meshes/tools/hammer/hammer_head/hammer_head_1/hammer_head.xml
+      xml_dir: obj/meshes/tools/hammer/hammer_head
+    hawkeye:
+      class: Toy
+      sample_xml: obj/meshes/toys/marvel/hawkeye/hawkeye_0/hawkeye.xml
+      xml_dir: obj/meshes/toys/marvel/hawkeye
+    hot_dog:
+      class: Bread
+      sample_xml: obj/meshes/breads/hot_dog/hot_dog_0/model.xml
+      xml_dir: obj/meshes/breads/hot_dog
+    hotsauce:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/hotsauce/model.xml
+      xml_dir: obj/meshes/condiment/hotsauce
+    hulk:
+      class: Toy
+      sample_xml: obj/meshes/toys/marvel/hulk/hulk_2/hulk_seaside.xml
+      xml_dir: obj/meshes/toys/marvel/hulk
+    ingredient:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/onion/onion_10/model.xml
+      xml_dir: obj/meshes/ingredients
+    introduction_to_electronics:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/introduction_to_electronics/introduction_to_electronics.xml
+      xml_dir: null
+    ironman:
+      class: Toy
+      sample_xml: obj/meshes/toys/marvel/ironman/ironman_1/iron-man_mark_7.xml
+      xml_dir: obj/meshes/toys/marvel/ironman
+    jessie:
+      class: Toy
+      sample_xml: obj/meshes/toys/disney/toystory/jessie/jessie_0/disney_infinity_jessie.xml
+      xml_dir: obj/meshes/toys/disney/toystory/jessie
+    joker:
+      class: Toy
+      sample_xml: obj/meshes/toys/DC/joker/joker_0/joker_textured_rigged.xml
+      xml_dir: obj/meshes/toys/DC/joker
+    juice:
+      class: Drink
+      sample_xml: obj/meshes/drinks/juice/bottled_drink_2/model.xml
+      xml_dir: obj/meshes/drinks/juice
+    juicer:
+      class: Juicer
+      sample_xml: obj/meshes/tools/juicer/juicer_0/juicer_body/juicer.xml
+      xml_dir: obj/meshes/tools/juicer/juicer_0/juicer_body
+    juicer_cap:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/tools/juicer/juicer_0/juicer_cap/juicer_cap.xml
+      xml_dir: obj/meshes/tools/juicer/juicer_0/juicer_cap
+    jumpstart:
+      class: Drink
+      sample_xml: obj/meshes/drinks/energy_drink/jumpstart/jumpstart.xml
+      xml_dir: obj/meshes/drinks/energy_drink/jumpstart
+    ketchup:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/ketchup/ketchup_0/model.xml
+      xml_dir: obj/meshes/condiment/ketchup
+    ketchup_seen:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/ketchup/ketchup_0/model.xml
+      xml_dir: obj/meshes/condiment/ketchup
+    ketchup_unseen:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/ketchup/ketchup_0/model.xml
+      xml_dir: obj/meshes/condiment/ketchup
+    kiwi:
+      class: Fruit
+      sample_xml: obj/meshes/fruit/kiwi/kiwi_0/model.xml
+      xml_dir: obj/meshes/fruit/kiwi
+    knife:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/tablewares/knifes/knife_24/model.xml
+      xml_dir: obj/meshes/tablewares/knifes
+    knifeholder:
+      class: CommonContainer
+      sample_xml: obj/meshes/tablewares/holders/knifeholder/holder2/holder/holder.xml
+      xml_dir: obj/meshes/tablewares/holders/knifeholder
+    knifeholder_seen:
+      class: CommonContainer
+      sample_xml: obj/meshes/tablewares/holders/knifeholder/holder2/holder/holder.xml
+      xml_dir: obj/meshes/tablewares/holders/knifeholder
+    knifeholder_unseen:
+      class: CommonContainer
+      sample_xml: obj/meshes/tablewares/holders/knifeholder/holder2/holder/holder.xml
+      xml_dir: obj/meshes/tablewares/holders/knifeholder
+    landmark_cases_in_property_law:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/landmark_cases_in_property_law/landmark_cases_in_property_law.xml
+      xml_dir: null
+    laptop:
+      class: Laptop
+      sample_xml: obj/meshes/tools/laptop/laptop_1/laptop/laptop.xml
+      xml_dir: obj/meshes/tools/laptop
+    lemon:
+      class: Fruit
+      sample_xml: obj/meshes/fruit/lemon/lemon_0/model.xml
+      xml_dir: obj/meshes/fruit/lemon
+    loki:
+      class: Toy
+      sample_xml: obj/meshes/toys/marvel/loki/loki_0/loki_magic_supremacy.xml
+      xml_dir: obj/meshes/toys/marvel/loki
+    luffy:
+      class: Toy
+      sample_xml: obj/meshes/toys/onepiece/luffy/luffy_1/monkey_d_luffy_damage_-_one_piece.xml
+      xml_dir: obj/meshes/toys/onepiece/luffy
+    magnolia:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/flowers/bloom_flower/magnolia/flower.xml
+      xml_dir: obj/meshes/flowers/bloom_flower/magnolia
+    mahjong:
+      class: Mahjong
+      sample_xml: obj/meshes/mahjong/mahjong.xml
+      xml_dir: null
+    mango:
+      class: Fruit
+      sample_xml: obj/meshes/fruit/mango/mango_19/model.xml
+      xml_dir: obj/meshes/fruit/mango
+    meilin:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/tools/medical/meilin/meilin/meilin.xml
+      xml_dir: null
+    mickey:
+      class: Toy
+      sample_xml: obj/meshes/toys/disney/mickey/mickey/mickey_0/mickey.xml
+      xml_dir: obj/meshes/toys/disney/mickey/mickey
+    microwave:
+      class: Microwave
+      sample_xml: obj/meshes/containers/microwaves/pack_2/model.xml
+      xml_dir: obj/meshes/containers/microwaves
+    milk:
+      class: Drink
+      sample_xml: obj/meshes/drinks/milk/milk_4/model.xml
+      xml_dir: obj/meshes/drinks/milk
+    minnie:
+      class: Toy
+      sample_xml: obj/meshes/toys/disney/mickey/minnie/minnie_0/disneys_minnie_mouse_-_classic.xml
+      xml_dir: obj/meshes/toys/disney/mickey/minnie
+    mirrors:
+      class: Mirrors
+      sample_xml: obj/meshes/tools/mirror/mirror.xml
+      xml_dir: obj/meshes/tools/mirror
+    mobile_computing_principles:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/mobile_computing_principles/mobile_computing_principles.xml
+      xml_dir: null
+    monster:
+      class: Drink
+      sample_xml: obj/meshes/drinks/energy_drink/monster/monster.xml
+      xml_dir: obj/meshes/drinks/energy_drink/monster
+    mug:
+      class: Mug
+      sample_xml: obj/meshes/tablewares/cups/mug4/red_coffee_mug.xml
+      xml_dir: obj/meshes/tablewares/cups
+    mushroom:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/mushroom/mushroom_7/model.xml
+      xml_dir: obj/meshes/ingredients/mushroom
+    nail:
+      class: Nail
+      sample_xml: obj/meshes/tools/nail/nail_0/nail.xml
+      xml_dir: obj/meshes/tools/nail
+    nametag:
+      class: NameTag
+      sample_xml: obj/meshes/tube/nametag/nametag.xml
+      xml_dir: null
+    nami:
+      class: Toy
+      sample_xml: obj/meshes/toys/onepiece/nami/nami_0/nami_one_piece.xml
+      xml_dir: obj/meshes/toys/onepiece/nami
+    number_cube:
+      class: NumberCube
+      sample_xml: obj/meshes/number_cube/numbercube.xml
+      xml_dir: null
+    one_hundred_years_of_solitude:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/one_hundred_years_of_solitude/one_hundred_years_of_solitude.xml
+      xml_dir: null
+    onion:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/onion/onion_10/model.xml
+      xml_dir: obj/meshes/ingredients/onion
+    opengl:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/opengl/opengl.xml
+      xml_dir: null
+    orange:
+      class: Fruit
+      sample_xml: obj/meshes/fruit/orange/orange_5/model.xml
+      xml_dir: obj/meshes/fruit/orange
+    painting:
+      class: Painting
+      sample_xml: obj/meshes/paintings/painting.xml
+      xml_dir: null
+    pan_seen:
+      class: FlatContainer
+      sample_xml: obj/meshes/tablewares/pans/pan_14/model.xml
+      xml_dir: obj/meshes/tablewares/pans
+    pan_unseen:
+      class: FlatContainer
+      sample_xml: obj/meshes/tablewares/pans/pan_14/model.xml
+      xml_dir: obj/meshes/tablewares/pans
+    peach:
+      class: Fruit
+      sample_xml: obj/meshes/fruit/peach/peach_6/model.xml
+      xml_dir: obj/meshes/fruit/peach
+    pear:
+      class: Fruit
+      sample_xml: obj/meshes/fruit/pear/pear_2/model.xml
+      xml_dir: obj/meshes/fruit/pear
+    peony:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/flowers/bloom_flower/peony/peony_1/peony_1.xml
+      xml_dir: obj/meshes/flowers/bloom_flower/peony
+    pill:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/tools/medical/pill1/pill/pill.xml
+      xml_dir: null
+    placemat:
+      class: PlaceMat
+      sample_xml: obj/meshes/tablewares/placemats/placemat_5/placemat_5.xml
+      xml_dir: obj/meshes/tablewares/placemats
+    plate:
+      class: Plate
+      sample_xml: obj/meshes/tablewares/plates/plate_13/model.xml
+      xml_dir: obj/meshes/tablewares/plates
+    plate_seen:
+      class: Plate
+      sample_xml: obj/meshes/tablewares/plates/plate_13/model.xml
+      xml_dir: obj/meshes/tablewares/plates
+    plate_unseen:
+      class: Plate
+      sample_xml: obj/meshes/tablewares/plates/plate_13/model.xml
+      xml_dir: obj/meshes/tablewares/plates
+    pluto:
+      class: Toy
+      sample_xml: obj/meshes/toys/disney/mickey/pluto/pluto_0/pluto.xml
+      xml_dir: obj/meshes/toys/disney/mickey/pluto
+    poker:
+      class: Poker
+      sample_xml: obj/meshes/poker/poker_asset.xml
+      xml_dir: null
+    potato:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/potato/potato_3/model.xml
+      xml_dir: obj/meshes/ingredients/potato
+    python:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/python/python.xml
+      xml_dir: null
+    redbull:
+      class: Drink
+      sample_xml: obj/meshes/drinks/energy_drink/redbull/redbull.xml
+      xml_dir: obj/meshes/drinks/energy_drink/redbull
+    reiju:
+      class: Toy
+      sample_xml: obj/meshes/toys/onepiece/reiju/reiju_0/reiju.xml
+      xml_dir: obj/meshes/toys/onepiece/reiju
+    rex:
+      class: Toy
+      sample_xml: obj/meshes/toys/disney/toystory/rex/rex_0/disney_infinity_rex_toy_story.xml
+      xml_dir: obj/meshes/toys/disney/toystory/rex
+    robin:
+      class: Toy
+      sample_xml: obj/meshes/toys/onepiece/robin/robin_0/nico_robin.xml
+      xml_dir: obj/meshes/toys/onepiece/robin
+    rose:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/flowers/bloom_flower/rose/rose_2/rose.xml
+      xml_dir: obj/meshes/flowers/bloom_flower/rose
+    salad_dressing:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/salad_dressing/salad_dressing.xml
+      xml_dir: obj/meshes/condiment/salad_dressing
+    salt:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/shaker/shaker_3/model.xml
+      xml_dir: obj/meshes/condiment/shaker
+    salt_seen:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/shaker/shaker_3/model.xml
+      xml_dir: obj/meshes/condiment/shaker
+    salt_unseen:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/shaker/shaker_3/model.xml
+      xml_dir: obj/meshes/condiment/shaker
+    sanji:
+      class: Toy
+      sample_xml: obj/meshes/toys/onepiece/sanji/sanji_0/sanji.xml
+      xml_dir: obj/meshes/toys/onepiece/sanji
+    scholars_of_contract_law:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/scholars_of_contract_law/scholars_of_contract_law.xml
+      xml_dir: null
+    sd_card:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/tools/cards/sd_card1/sd_card/sd_card.xml
+      xml_dir: null
+    seesaw:
+      class: CommonContainer
+      sample_xml: obj/meshes/tools/seesaw_machine/seesaw_machine.xml
+      xml_dir: null
+    shaker:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/shaker/shaker_3/model.xml
+      xml_dir: obj/meshes/condiment/shaker
+    shaker_seen:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/shaker/shaker_3/model.xml
+      xml_dir: obj/meshes/condiment/shaker
+    shaker_unseen:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/shaker/shaker_3/model.xml
+      xml_dir: obj/meshes/condiment/shaker
+    shelf:
+      class: Shelf
+      sample_xml: obj/meshes/containers/shelf/shelf2.xml
+      xml_dir: obj/meshes/containers/shelf
+    slinky_dog:
+      class: Toy
+      sample_xml: obj/meshes/toys/disney/toystory/slinky_dog/slinky_dog_0/slinky_dog_for_garry_mod.xml
+      xml_dir: obj/meshes/toys/disney/toystory/slinky_dog
+    small_fridge:
+      class: Fridge
+      sample_xml: obj/meshes/containers/fridge/small_fridge/fridge_small_1/mobility.xml
+      xml_dir: obj/meshes/containers/fridge/small_fridge
+    snack:
+      class: Snack
+      sample_xml: obj/meshes/snacks/chocolate/chocolate_0/model.xml
+      xml_dir: obj/meshes/snacks
+    spiderman:
+      class: Toy
+      sample_xml: obj/meshes/toys/marvel/spiderman/spiderman_0/spiderman_aracnido.xml
+      xml_dir: obj/meshes/toys/marvel/spiderman
+    spirit:
+      class: Drink
+      sample_xml: obj/meshes/drinks/sota_drink/spirit/spirit_0/spirit.xml
+      xml_dir: obj/meshes/drinks/sota_drink/spirit
+    spoon:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/tablewares/spoons/spoon_1/model.xml
+      xml_dir: obj/meshes/tablewares/spoons
+    steak:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/steak/steak_6/model.xml
+      xml_dir: obj/meshes/ingredients/steak
+    steve_jobs:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/steve_jobs/steve_jobs.xml
+      xml_dir: null
+    stove:
+      class: Stove
+      sample_xml: obj/meshes/stoves/dual_gas/model.xml
+      xml_dir: obj/meshes/stoves
+    strawberry:
+      class: Fruit
+      sample_xml: obj/meshes/fruit/strawberry/strawberry.xml
+      xml_dir: obj/meshes/fruit/strawberry
+    sugar:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/shaker/shaker_3/model.xml
+      xml_dir: obj/meshes/condiment/shaker
+    sugar_seen:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/shaker/shaker_3/model.xml
+      xml_dir: obj/meshes/condiment/shaker
+    sugar_unseen:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/condiment/shaker/shaker_3/model.xml
+      xml_dir: obj/meshes/condiment/shaker
+    sunflower:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/flowers/bloom_flower/sunflower/sunflower_2/sunflower_2.xml
+      xml_dir: obj/meshes/flowers/bloom_flower/sunflower
+    superman:
+      class: Toy
+      sample_xml: obj/meshes/toys/DC/superman/superman_1/superman_textured_rigged.xml
+      xml_dir: obj/meshes/toys/DC/superman
+    sweet_potato:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/sweet_potato/sweet_potato_2/model.xml
+      xml_dir: obj/meshes/ingredients/sweet_potato
+    thanos:
+      class: Toy
+      sample_xml: obj/meshes/toys/marvel/thanos/thanos_0/thanos_annihilationtextured__rigged.xml
+      xml_dir: obj/meshes/toys/marvel/thanos
+    the_adventures_of_huckleberry_finn:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/the_adventures_of_huckleberry_finn/the_adventures_of_huckleberry_finn.xml
+      xml_dir: null
+    the_autobiography_of_benjamin_franklin:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/the_autobiography_of_benjamin_franklin/the_autobiography_of_benjamin_franklin.xml
+      xml_dir: null
+    the_great_divergence_china_europe_and_the_making_of_the_modern_world_economy:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/the_great_divergence_china_europe_and_the_making_of_the_modern_world_economy/the_great_divergence_china_europe_and_the_making_of_the_modern_world_economy.xml
+      xml_dir: null
+    the_life_of_samuel_johnson:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/the_life_of_samuel_johnson/the_life_of_samuel_johnson.xml
+      xml_dir: null
+    the_story_of_american_freedom:
+      class: Book
+      sample_xml: obj/meshes/books/bookscan/the_story_of_american_freedom/the_story_of_american_freedom.xml
+      xml_dir: null
+    thor:
+      class: Toy
+      sample_xml: obj/meshes/toys/marvel/thor/thor_0/thortexturedrigged.xml
+      xml_dir: obj/meshes/toys/marvel/thor
+    tomato:
+      class: Ingredient
+      sample_xml: obj/meshes/ingredients/tomato/tomato_1/model.xml
+      xml_dir: obj/meshes/ingredients/tomato
+    trashcan:
+      class: CommonContainer
+      sample_xml: obj/meshes/containers/trashcan/trashcan_simple/trashcan_simple.xml
+      xml_dir: null
+    tray:
+      class: FlatContainer
+      sample_xml: obj/meshes/containers/tray/tray_5/model.xml
+      xml_dir: obj/meshes/containers/tray
+    tube:
+      class: ChemistryTube
+      sample_xml: obj/meshes/tube/tube/tube.xml
+      xml_dir: null
+    tulip:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/flowers/bloom_flower/tulip/tulip_draft_0/tulip_draft_0.xml
+      xml_dir: obj/meshes/flowers/bloom_flower/tulip
+    vase:
+      class: Vase
+      sample_xml: obj/meshes/containers/vases/vase_2/vase.xml
+      xml_dir: obj/meshes/containers/vases
+    vision:
+      class: Toy
+      sample_xml: obj/meshes/toys/marvel/vision/vision_0/vision_texturedrigged.xml
+      xml_dir: obj/meshes/toys/marvel/vision
+    waffle:
+      class: Dessert
+      sample_xml: obj/meshes/dessert/waffle/waffle_3/model.xml
+      xml_dir: obj/meshes/dessert/waffle
+    wilted_flower:
+      class: CommonGraspedEntity
+      sample_xml: obj/meshes/flowers/wilted_flower/wilted_flower_3/wiltered_flower.xml
+      xml_dir: obj/meshes/flowers/wilted_flower
+    wine:
+      class: Drink
+      sample_xml: obj/meshes/drinks/wine/wine_13/model.xml
+      xml_dir: obj/meshes/drinks/wine
+    wonder_woman:
+      class: Toy
+      sample_xml: obj/meshes/toys/DC/wonder_woman/wonder_woman_0/wonder_womantexturedrigged.xml
+      xml_dir: obj/meshes/toys/DC/wonder_woman
+    woody:
+      class: Toy
+      sample_xml: obj/meshes/toys/disney/toystory/woody/woody_1/disney_infinity_woody.xml
+      xml_dir: obj/meshes/toys/disney/toystory/woody
+    zoro:
+      class: Toy
+      sample_xml: obj/meshes/toys/onepiece/zoro/zoro_0/one_piece_zoro_figurine.xml
+      xml_dir: obj/meshes/toys/onepiece/zoro
+scenes:
+  available:
+    apartment_0:
+      candidate_pos_count: 3
+      xml_path: apartment_0/futuristic_room/futuristic_room.xml
+    apartment_1:
+      candidate_pos_count: 4
+      xml_path: apartment_1/an_old_cheap_room_in_chinatown/an_old_cheap_room_in_chinatown.xml
+    bedroom_0:
+      candidate_pos_count: 3
+      xml_path: bedroom_0/bedroom.xml
+    dining_hall_0:
+      candidate_pos_count: 3
+      xml_path: dining_hall_0/hotelhamilton/hotelhamilton.xml
+    dining_hall_2:
+      candidate_pos_count: 3
+      xml_path: dining_hall_2/resto_ni_teo/resto_ni_teo.xml
+    greenhouse_0:
+      candidate_pos_count: 3
+      xml_path: greenhouse_0/greenhouse_park_fbx_free/greenhouse_park_fbx_free.xml
+    kitchen_0:
+      candidate_pos_count: 3
+      xml_path: kitchen_0/modern_scandinavian_kitchen_island/modern_scandinavian_kitchen_island.xml
+    kitchen_1:
+      candidate_pos_count: 2
+      xml_path: kitchen_1/simple_house_-_kitchen/simple_house_-_kitchen.xml
+    kitchen_2:
+      candidate_pos_count: 3
+      xml_path: kitchen_2/kitchen.xml
+    lab_0:
+      candidate_pos_count: 2
+      xml_path: lab_0/lab.xml
+    lab_1:
+      candidate_pos_count: 3
+      xml_path: lab_1/lab.xml
+    living_room_0:
+      candidate_pos_count: 3
+      xml_path: living_room_0/livingroom.xml
+    medical_room_1:
+      candidate_pos_count: 4
+      xml_path: medical_room_1/charite_university_hospital_-_operating_room/charite_university_hospital_-_operating_room.xml
+    office_0:
+      candidate_pos_count: 3
+      xml_path: office_0/minimalistic_modern_office/minimalistic_modern_office.xml
+    store_0:
+      candidate_pos_count: 3
+      xml_path: store_0/store.xml
+    studyroom_0:
+      candidate_pos_count: 5
+      xml_path: studyroom_0/studyroom.xml
+    wall_0:
+      candidate_pos_count: 1
+      xml_path: kitchen_2/kitchen.xml
+  by_keyword:
+    kitchen: kitchen_0
+    lab: lab_0
+    living_room: living_room_0
+    study: studyroom_0
+  fallback: living_room_0

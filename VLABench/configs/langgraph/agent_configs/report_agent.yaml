@@ -1,0 +1,44 @@
+# Report Generation Agent Configuration
+# Phase 1: Basic Markdown report generation
+
+# Output configuration
+report_output_dir: "VLABench/reports"
+
+# Report format
+report_format: "markdown"  # Options: "markdown", "html", "pdf" (Phase 2+)
+
+# Report content settings
+include_charts: false  # Phase 2+: Generate visualization charts
+include_raw_data: true  # Include raw evaluation results
+include_workflow_summary: true  # Include pipeline execution summary
+
+# Visualization settings (Phase 2+)
+chart_types:
+  - "bar"  # Metrics bar chart
+  - "radar"  # Multi-metric radar chart
+  - "timeline"  # Progress over episodes
+
+# Report sections
+sections:
+  - "task_info"
+  - "scenario_config"
+  - "trajectory_info"
+  - "metrics"
+  - "performance_analysis"
+  - "raw_results"
+  - "workflow_summary"
+
+# Metrics thresholds for status indicators
+thresholds:
+  excellent: 0.8
+  good: 0.6
+  fair: 0.4
+  poor: 0.0
+
+# Export settings
+auto_export_pdf: false  # Phase 2+: Automatically export to PDF
+email_report: false  # Phase 2+: Email report to recipients
+
+# Debug settings
+verbose: true
+save_intermediate: false
