@@ -59,13 +59,21 @@ def build_app(config: Dict[str, Any] | None = None):
 
 def default_config() -> Dict[str, Any]:
     here = Path(__file__).resolve()
-    mapping_path = (
-        here.parents[2] / "configs" / "langgraph" / "keyword_mapping.yaml"
-    )
+    # File layout: VLABench/langgraph_agents/scenario_graph.py
+    # VLABench dir = parents[1]
+    mapping_path = here.parents[1] / "configs" / "langgraph" / "keyword_mapping.yaml"
     return {
         "enable_llm": False,
         "keyword_mapping_path": str(mapping_path),
         # kitchen priority as discussed
         "kitchen_priority": ["kitchen_0", "kitchen_2", "kitchen_1"],
+        # optional reference image generation for missing assets
+        "enable_image_generation": False,
+        "images_per_asset": 3,
+        "additions_root": str((here.parents[1] / "assets_user_additions")),
+        # OpenAI credentials (may be overridden by CLI or api_keys.yaml)
+        "openai_api_key": None,
+        "openai_base_url": None,
+        "openai_model": None,
+        "openai_image_model": None,
     }
-

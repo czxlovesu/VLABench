@@ -156,7 +156,8 @@ def main():
     minimal_object_hints = [
         "pan", "plate", "tray", "microwave", "small_fridge", "basket", "knife", "baby"
     ]
-    by_keyword_objects = {k: k for k in minimal_object_hints if k in object_defs}
+    # Always include minimal hints to enable rule fallback resolution
+    by_keyword_objects = {k: k for k in minimal_object_hints}
 
     # Scenes available list
     scenes_available = {}
@@ -197,4 +198,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

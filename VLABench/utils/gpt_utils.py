@@ -1,5 +1,9 @@
 '''
-Pass the local image base64 code to the OpenAI API to get the image captioning result.
+Lightweight OpenAI helpers used by agents.
+
+- query_gpt4_v: text chat convenience wrapper
+- generate_images: image generation (reference renders for missing assets)
+- base64/image utilities
 '''
 from openai import OpenAI
 import os
@@ -75,3 +79,38 @@ def build_prompt_with_tilist(text_image_list):
             uri = convert_base64_to_data_uri(base64image)
             prompt.append({"type": "image_url", "image_url": {"url": uri}})
     return prompt
+
+
+def generate_images(prompt: str, out_dir: str, n: int = 3, size: str = "1024x1024", model: str | None = None, **kwargs):
+    """
+    Generate reference images via OpenAI Images API and save to out_dir.
+
+    Params:
+      - prompt: text prompt for generation
+      - out_dir: directory to save images
+      - n: number of images
+      - size: e.g., "1024x1024"
+      - model: override model name (default from env OPENAI_IMAGE_MODEL or 'gpt-image-1')
+      - kwargs: api_key, base_url optional overrides
+
+    Returns: list of saved file paths
+    """
+    os.makedirs(out_dir, exist_ok=True)
+    client = OpenAI(
+        api_key=kwargs.get("api_key", os.environ.get("OPENAI_API_KEY", None)),
+        base_url=kwargs.get("base_url", os.environ.get("OPENAI_BASE_URL", None)),
+    )
+    model = model or os.environ.get("OPENAI_IMAGE_MODEL", "gpt-image-1")
+    # The OpenAI SDK returns base64 strings in response.data[i].b64_json
+    resp = client.images.generate(model=model, prompt=prompt, size=size, n=n)
+    saved = []
+    for i, datum in enumerate(resp.data, 1):
+        b64 = getattr(datum, "b64_json", None)
+        if not b64:
+            continue
+        img_bytes = base64.b64decode(b64)
+        path = os.path.join(out_dir, f"ref_{i:02d}.png")
+        with open(path, "wb") as f:
+            f.write(img_bytes)
+        saved.append(path)
+    return saved

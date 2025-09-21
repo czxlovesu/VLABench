@@ -172,6 +172,9 @@ VLABench/third_party
 
 VLABench/evaluateVLM/dataset/
 
+# Generated reference images and user additions (keep out of git)
+VLABench/assets_user_additions/
+
 scripts/paper_scripts
 
 # *sh

@@ -13,6 +13,7 @@ objects:
     basket: basket
     knife: knife
     microwave: microwave
+    pan: pan
     plate: plate
     small_fridge: small_fridge
     tray: tray

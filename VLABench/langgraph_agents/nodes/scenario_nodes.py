@@ -176,14 +176,20 @@ def parse_intent_node(state: ScenarioState) -> ScenarioState:
     words = re.findall(r"[a-zA-Z_]+", text)
 
     obj_map = mapping.get("objects", {}).get("by_keyword", {})
+    obj_defs = mapping.get("objects", {}).get("object_defs", {})
     scene_map = mapping.get("scenes", {}).get("by_keyword", {})
     container_verbs = set(mapping.get("container_verbs", []))
 
-    object_hints = [w for w in words if w in obj_map]
+    # Consider both explicit by_keyword and any existing object_def keys as valid hints
+    minimal_known = {"pan", "plate", "tray", "microwave", "small_fridge", "basket", "knife", "baby", "candle"}
+    object_hints = [
+        w for w in words if (w in obj_map) or (w in obj_defs) or (w in minimal_known)
+    ]
     scene_hints = [w for w in words if w in scene_map]
     container_intent = any(w in container_verbs for w in words)
 
     # LLM assist (optional)
+    llm_used = False
     if cfg.get("enable_llm"):
         try:
             from VLABench.utils.gpt_utils import query_gpt4_v
@@ -196,7 +202,12 @@ def parse_intent_node(state: ScenarioState) -> ScenarioState:
                 f"User: {text}\n"
                 "Respond with pure JSON only."
             )
-            resp = query_gpt4_v(prompt)
+            resp = query_gpt4_v(
+                prompt,
+                model=cfg.get("openai_model") or "gpt-4o",
+                api_key=cfg.get("openai_api_key"),
+                base_url=cfg.get("openai_base_url"),
+            )
             m = re.search(r"\{.*\}\s*$", resp, re.S)
             if m:
                 data = json.loads(m.group(0))
@@ -204,6 +215,7 @@ def parse_intent_node(state: ScenarioState) -> ScenarioState:
                 object_hints = list({*object_hints, *(data.get("object_hints") or [])})
                 scene_hints = list({*scene_hints, *(data.get("scene_hints") or [])})
                 container_intent = container_intent or bool(data.get("container_intent"))
+                llm_used = True
         except Exception:
             pass
 
@@ -214,6 +226,7 @@ def parse_intent_node(state: ScenarioState) -> ScenarioState:
             **state.get("audit", {}),
             "object_hints": object_hints,
             "scene_hints": scene_hints,
+            "llm_used": llm_used,
         },
     })
     return state
@@ -226,7 +239,9 @@ def select_scene_node(state: ScenarioState) -> ScenarioState:
 
     scene_map = mapping.get("scenes", {}).get("by_keyword", {})
     fallback = mapping.get("scenes", {}).get("fallback", "living_room_0")
-    hints = (state.get("audit", {}) or {}).get("scene_hints", [])
+    audit = (state.get("audit", {}) or {})
+    hints = audit.get("scene_hints", [])
+    object_hints = audit.get("object_hints", [])
 
     scene_key = None
     # kitchen priority
@@ -240,6 +255,12 @@ def select_scene_node(state: ScenarioState) -> ScenarioState:
             key = scene_map.get(h)
             if key and key in scenes:
                 scene_key = key
+                break
+    # Infer kitchen by object hints (pan/microwave/fridge/plate/tray/stove)
+    if not scene_key and any(h in {"pan", "microwave", "small_fridge", "fridge", "plate", "tray", "stove"} for h in object_hints):
+        for cand in cfg.get("kitchen_priority", ["kitchen_0", "kitchen_2", "kitchen_1"]):
+            if cand in scenes:
+                scene_key = cand
                 break
     if not scene_key:
         scene_key = fallback if fallback in scenes else next(iter(scenes.keys()))
@@ -260,6 +281,7 @@ def select_assets_node(state: ScenarioState) -> ScenarioState:
     cfg = state.get("config", {})
     mapping = _load_keyword_mapping(Path(cfg.get("keyword_mapping_path")) if cfg.get("keyword_mapping_path") else None)
     obj_map = mapping.get("objects", {}).get("by_keyword", {})
+    obj_defs = mapping.get("objects", {}).get("object_defs", {})
 
     object_hints: List[str] = list((state.get("audit", {}) or {}).get("object_hints", []))
     selected_keys: List[str] = []
@@ -269,6 +291,8 @@ def select_assets_node(state: ScenarioState) -> ScenarioState:
     # map hints -> object keys
     for w in object_hints:
         key = obj_map.get(w)
+        if not key and w in obj_defs:
+            key = w
         if not key:
             missing.append(w)
             continue
@@ -289,6 +313,10 @@ def select_assets_node(state: ScenarioState) -> ScenarioState:
         "object_classes": object_classes,
         "missing_assets": missing,
     })
+    # Optional: generate reference images for missing assets
+    cfg = state.get("config", {})
+    if cfg.get("enable_image_generation") and missing:
+        _maybe_generate_missing_asset_images(state, missing)
     return state
 
 
@@ -345,3 +373,47 @@ def finalize_output_node(state: ScenarioState) -> ScenarioState:
     state.setdefault("missing_assets", [])
     return state
 
+
+# ---------- Optional reference image generation ----------
+
+def _slugify(text: str) -> str:
+    txt = re.sub(r"[^a-zA-Z0-9_]+", "_", text.strip().lower())
+    return txt.strip("_") or "task"
+
+
+def _maybe_generate_missing_asset_images(state: ScenarioState, missing: List[str]) -> None:
+    try:
+        from VLABench.utils.gpt_utils import generate_images
+    except Exception:
+        # silently skip if SDK not available
+        return
+
+    cfg = state.get("config", {})
+    vlabench_root = _vlabench_root()
+    additions_root = Path(cfg.get("additions_root") or (vlabench_root / "assets_user_additions"))
+    user_query = state.get("user_query", "") or ""
+    task_slug = cfg.get("task_slug") or _slugify(user_query[:80])
+    images_per = int(cfg.get("images_per_asset") or 3)
+
+    audit = state.setdefault("audit", {})
+    gen_map = audit.setdefault("generated_images", {})
+
+    for item in missing:
+        # Build prompt per your requirement
+        prompt = (
+            f"High-res 3D modeling reference of {item}, multi-angle, clear details, clean background."
+        )
+        out_dir = additions_root / task_slug / "images" / item
+        try:
+            saved = generate_images(
+                prompt,
+                str(out_dir),
+                n=images_per,
+                model=cfg.get("openai_image_model"),
+                api_key=cfg.get("openai_api_key"),
+                base_url=cfg.get("openai_base_url"),
+            )
+            gen_map[item] = saved
+        except Exception as e:
+            # record error but continue
+            gen_map[item] = {"error": str(e)}
