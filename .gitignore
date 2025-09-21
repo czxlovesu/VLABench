@@ -186,3 +186,7 @@ gitconfig
 lerobot/
 src/rrt-algorithms/
 VLABench/configs/langgraph/api_keys.yaml
+ 
+# Trajectories data (large binary files; keep out of git)
+VLABench/trajectories/**/*.hdf5
+VLABench/trajectories/**/*.h5
