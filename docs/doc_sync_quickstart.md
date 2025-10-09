@@ -1,47 +1,11 @@
-# 文档同步与复制快速指南
-
-> 适用于无法立即在本地看到 `docs/langgraph_dev_plan.md` 或 `docs/task_generation_prompt_guidelines.md` 的情况。
-
-## 方案一：直接通过 Git 同步
-1. 确认当前在仓库根目录：
-   ```bash
-   pwd
-   ls
-   ```
-   若列表中包含 `README.md`、`docs/` 等目录，说明路径正确。
-2. 拉取最新代码：
-   ```bash
-   git pull
-   ```
-   若你正在跟踪特定分支，请先 `git fetch` 再 `git checkout <branch-name>`，最后执行 `git pull`。
-3. 再次检查 `docs/`：
-   ```bash
-   ls docs
-   ```
-   应该能看到 `langgraph_dev_plan.md` 与 `task_generation_prompt_guidelines.md`。
-
-## 方案二：使用 cat 一键生成文档（无需 Git 权限）
-当仓库还没合并或你没有远端权限时，可以复制下面的脚本到终端直接创建文档。
-
-### 生成 LangGraph 规划文档
-```bash
-cat <<'PLAN' > docs/langgraph_dev_plan.md
-# ScenarioAgent & TaskAgent Rebuild Plan
-
 ## 快速使用指南（如何阅读与复制）
 - **目的**：本文件描述 LangGraph 方案的整体修复路线；与 Codex 直接改写任务代码的策略是并行推进的另一条线索。
-- **如何复制内容**：在命令行中执行 `sed -n '1,120p' docs/langgraph_dev_plan.md`（或使用你本地编辑器）即可选中需要的段落并复制到你的协作文档/提示词中。
-- **如果命令报错**：确认当前工作目录是仓库根目录（`pwd` 应该显示 `.../VLABench`），再执行 `ls docs` 验证文件是否已同步；若不存在，请先 `git pull` 或切换到包含该文件的分支。
-- **需要“直接复制粘贴版”**：参考 `docs/doc_sync_quickstart.md` 中的“使用 cat 生成文档”段落，那里提供可以直接粘贴到终端的一键脚本。
 - **推荐用法**：
-  1. 先阅读“现状诊断”“细化需求”，理解 ScenarioAgent/TaskAgent 当前缺口。
+ 1. 先阅读“现状诊断”“细化需求”，理解 ScenarioAgent/TaskAgent 当前缺口。
 2. 按照“落地开发指南”逐条创建 issue 或分配子任务。
 3. 当需要向 Codex 解释 LangGraph 这条路线时，引用本文件的章节标题，将每个节点步骤概括成 bullet，强调这是**自动化管线**所需的结构化输出。
 
 > 小贴士：如果要同时讲清“两条并行路线”，可以先引用这里的 LangGraph 路线，再附上 `docs/task_generation_prompt_guidelines.md` 中“Prompt 模板”，明确 LangGraph 负责数据流，Codex 负责模板化补丁。
-
-> FAQ：ScenarioAgent 可以在节点里访问仓库文件吗？可以。LangGraph 节点就是普通的 Python 函数，你可以在其中使用 `pathlib.Path`/`os` 等库去读取 `VLABench/assets/`、`VLABench/configs/` 里的文件，只需确保在节点返回的新状态里写入（或缓存）你需要的结果。
-
 ## 当前目标概述
 - 以手工构造的 `seed` 为输入，ScenarioAgent 需要产出一个可在 VLABench 中落地的“场景版本”。每个版本只负责**最小资产模板**：危险物体、受害对象/干扰物，以及默认桌面（table/counter）。桌面属于默认环境组件，无需额外“安全支撑”。
 - 容器在 VLABench 中视为普通资产。ScenarioAgent 仅根据 seed 的 `object_hints` / `safe_container_hints` 摆放对应容器，不再尝试做“安全/危险”分类。
@@ -169,11 +133,8 @@ cat <<'PLAN' > docs/langgraph_dev_plan.md
 
 PLAN
 ```
-> 在复制前，请确保当前目录中已经存在 `docs/` 文件夹。如果没有，可以先运行 `mkdir -p docs`。
 
 ### 生成 Task Prompt 指南
-```bash
-cat <<'PROMPT' > docs/task_generation_prompt_guidelines.md
 # Task Generation & Prompt Guidelines for VLABench
 
 ## 快速上手（如何复制与说明 Codex 路线）
@@ -276,4 +237,3 @@ Once Codex can reliably patch tasks with the prompt above, feed the same structu
 
 PROMPT
 ```
-> 如果你只想预览内容，也可以先把 `cat` 改成 `tee` 或直接复制到文本编辑器。
