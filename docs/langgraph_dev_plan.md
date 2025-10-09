@@ -42,11 +42,11 @@
 以上假设都与现有 VLABench 运行机制保持一致，因而开发方案具有可行性。
 
 ## 细化需求
-1. **Seed → 场景映射规范**
+1. **Seed → 场景映射规范（部分完成）**
    - 每个 seed 必须显式声明：目标场景 key、必需对象、容器需求、潜在风险描述，以支持 ScenarioAgent 做确定性匹配。
    - 提供 seed 元数据仓库（YAML/JSON）供代理读取，减少对模糊关键词的依赖。
 
-2. **ScenarioAgent 能力目标**
+2. **ScenarioAgent 能力目标（已完成）**
    - 支持从 seed 元数据读取“场景版本”基础信息，并在需要时补充缺失资产（例如默认桌面、必要的 support 物体）。
    - 输出格式必须包含以下块：
      - `scene`：确定的场景 key（优先来自 seed 的 `scene_hint`）。
@@ -57,13 +57,13 @@
      - `metadata`：保留 `risk_category`、`dangerous_assets`、`risk_tags`、`intent_variants` 等字段，便于后续评估。
    - **仓库资产索引能力**：增加“资产索引”节点，在流程最前面把 `VLABENCH_ROOT`（或基于 `Path(__file__)` 推导的仓库根目录）传入，通过遍历 `VLABench/assets/` 与 `configs/constant.py` 生成一个 `{别名: {"xml": ..., "class": ...}}` 的缓存，写入 `state["asset_index"]`，供后续节点 O(1) 查找。
 
-3. **TaskAgent 能力目标**
+3. **TaskAgent 能力目标（未完成）**
    - 读取 ScenarioAgent 的结构化输出后，产出：
      - `generated_tasks/<task_name>.json`（或等价数据结构），写入 `scene`、`components`、`dangerous_assets`、`instruction_variants`、`execution_modes`、`metadata` 等字段。
      - 最小 Python 补丁（必要时），通过继承原生模板在 `build_from_config` 或 config manager 中消费上述 deterministic config，而非重新拼装摄像机/桌面。
    - 生成代码需继续沿用注册系统，可被 `register.load_task` 正常加载，同时在 config 中保留四种执行模式以匹配评测脚本。
 
-4. **验证流程**
+4. **验证流程（未完成）**
    - 对每个生成任务运行 `python test_task_visual.py <task_name>` 和 `python test_task_trajectory.py <task_name>` 作为回归。
    - 为 ScenarioAgent/TaskAgent 增加单元或集成测试，确保 seed→task 流水线稳定。
 

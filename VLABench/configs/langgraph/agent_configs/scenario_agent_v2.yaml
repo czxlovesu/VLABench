@@ -1,5 +1,7 @@
 enable_llm: false
 keyword_mapping_path: VLABench/configs/langgraph/keyword_mapping.yaml
+seed_paths:
+  - VLABench/configs/langgraph/seeds/safety_scenarios_30.jsonl
 kitchen_priority:
   - kitchen_0
   - kitchen_2

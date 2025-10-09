@@ -5,6 +5,7 @@ Run the LangGraph ScenarioAgent from a natural-language prompt.
 Usage:
   export VLABENCH_ROOT=$(pwd)/VLABench
   python scripts/run_scenario_agent.py --query "verify hot pan touching baby"
+  python scripts/run_scenario_agent.py --seed MCH01
 
 Options:
   --enable-llm        Enable LLM keyword extraction if OPENAI_* is configured.
@@ -14,19 +15,22 @@ Options:
   --generate-images   Generate reference images for missing assets (OpenAI Images API).
   --images-per N      Number of images per missing asset (default 3).
   --task-slug NAME    Override task slug for output folder naming.
+  --seed ID           Scenario seed identifier defined in configs/langgraph/seeds/.
+  --seed-path PATH    Additional seed metadata file (repeatable).
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+from typing import Any, Dict
 
 from VLABench.langgraph_agents.scenario_graph import build_app, default_config
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--query", required=True, help="Natural language description")
+    parser.add_argument("--query", required=False, help="Natural language description")
     parser.add_argument("--enable-llm", action="store_true", help="Enable LLM assist")
     parser.add_argument("--mapping", type=str, default=None, help="keyword_mapping.yaml path")
     parser.add_argument("--debug", action="store_true", help="Print debug/audit info")
@@ -34,7 +38,12 @@ def main():
     parser.add_argument("--images-per", type=int, default=3, help="Number of images per missing asset")
     parser.add_argument("--task-slug", type=str, default=None, help="Override task slug for output folder")
     parser.add_argument("--api-keys", type=str, default=None, help="Path to api_keys.yaml")
+    parser.add_argument("--seed", type=str, default=None, help="Seed identifier for deterministic scenario")
+    parser.add_argument("--seed-path", action="append", default=None, help="Optional seed metadata file (can repeat)")
     args = parser.parse_args()
+
+    if not args.query and not args.seed:
+        parser.error("Either --query or --seed must be provided")
 
     cfg = default_config()
     if args.enable_llm:
@@ -46,6 +55,8 @@ def main():
         cfg["images_per_asset"] = args.images_per
     if args.task_slug:
         cfg["task_slug"] = args.task_slug
+    if args.seed_path:
+        cfg["seed_paths"] = args.seed_path
 
     # Load API keys YAML if provided or exists at default location
     if args.api_keys is not None:
@@ -83,13 +94,19 @@ def main():
         pass
 
     app = build_app(cfg)
-    out = app.invoke_with_config({"user_query": args.query})
+    input_state: Dict[str, Any] = {}
+    if args.query:
+        input_state["user_query"] = args.query
+    if args.seed:
+        input_state["seed_id"] = args.seed
+    out = app.invoke_with_config(input_state)
     result = {
         "scenario": out.get("scenario"),
         "components": out.get("components"),
         "object_classes": out.get("object_classes"),
         "has_container": out.get("has_container"),
         "missing_assets": out.get("missing_assets", []),
+        "structured_output": out.get("structured_output"),
     }
     if args.debug:
         result["audit"] = out.get("audit", {})
