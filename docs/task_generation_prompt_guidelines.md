@@ -1,22 +1,18 @@
 # Task Generation & Prompt Guidelines for VLABench
 
 ## 快速上手（如何复制与说明 Codex 路线）
-- **定位**：这份文档聚焦“直接调用 Codex/GPT 生成任务补丁”的路线，与 LangGraph 自动化方案并行推进。
-- **复制方式**：
-  - 终端中执行 `sed -n '1,160p' docs/task_generation_prompt_guidelines.md` 可以快速查看/复制前半部分；
-  - 若需整份文档，可使用 `cat docs/task_generation_prompt_guidelines.md` 或在编辑器中打开。
-- **常见报错处理**：若终端提示文件不存在，请确认已位于仓库根目录并执行 `ls docs`；若列表中缺少该文件，请先同步最新分支（例如 `git pull`）。
-- **没有 Git 更新权限时**：同样可以在 `docs/doc_sync_quickstart.md` 找到“一键生成”脚本，把文档内容写入本地文件后再粘贴给 Codex。
-- **对 Codex 的讲解方式**：把“Prompt 模板”一节完整复制到提示词顶部，再结合 seed 的 JSON 片段，明确告诉模型：
-  1. 目标是**复用原生任务模板**而不是重写摄像机/桌面；
-  2. 桌面/台面属于默认场景组件，不需要额外加“支撑”；托盘等容器就是普通资产；
-  3. 所有风险意图、容器/危险物体要求、四种执行模式都来自 seed/ScenarioAgent；
-  4. 这是与 LangGraph 路线并行的“手工补丁”方案，用于快速产出任务代码样例。
+- **定位**：这份文档服务于“直接调用 Codex/GPT 生成任务补丁”的路线，重点是提示词模板与手工检查清单；自动化的 LangGraph 方案请参考 `langgraph_dev_plan.md`。
+- **如何获取内容**：一般直接打开本文件即可；如遇文件缺失，可回到 `doc_sync_quickstart.md`，按其中的脚本重新生成。
+- **向 Codex 解释的方法**：复制“Prompt 模板”章节到提示词顶部，再附上 seed 的关键信息，明确：
+  1. 复用原生任务模板，不要重写摄像机/桌面；
+  2. 桌面默认存在，托盘等容器按普通资产处理；
+  3. 风险元数据、容器/危险物、四种执行模式全部来自 seed 或 ScenarioAgent 输出；
+  4. 这条路线与 LangGraph 并行，用于快速产出补丁示例。
 - **建议流程**：
-  1. 先按本文件的 Checklist 校验 seed→任务映射；
-  2. 准备好要修改的原生任务片段（例如 `select_fruit_series.py` 中的某个 class）；
-  3. 将“Prompt 模板”段落、seed 关键字段、所需修改要点一起复制给 Codex；
-  4. 获得 diff 后，与 LangGraph 路线的输出对照，确保配置字段一致。
+  1. 先根据“Coding checklist”核对 seed 与目标任务的一致性；
+  2. 准备要修改的原生任务片段；
+  3. 把提示模板、seed 摘要与修改要点一同发给 Codex；
+  4. 对照 LangGraph 的结构化输出确认字段一致，再进入测试。
 
 ## 1. What "native" primitive tasks look like
 The primitive tasks that ship with VLABench all follow a repeatable recipe:

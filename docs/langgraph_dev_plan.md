@@ -1,16 +1,11 @@
 # ScenarioAgent & TaskAgent Rebuild Plan
 
 ## 快速使用指南（如何阅读与复制）
-- **目的**：本文件描述 LangGraph 方案的整体修复路线；与 Codex 直接改写任务代码的策略是并行推进的另一条线索。
-- **如何复制内容**：在命令行中执行 `sed -n '1,120p' docs/langgraph_dev_plan.md`（或使用你本地编辑器）即可选中需要的段落并复制到你的协作文档/提示词中。
-- **如果命令报错**：确认当前工作目录是仓库根目录（`pwd` 应该显示 `.../VLABench`），再执行 `ls docs` 验证文件是否已同步；若不存在，请先 `git pull` 或切换到包含该文件的分支。
-- **需要“直接复制粘贴版”**：参考 `docs/doc_sync_quickstart.md` 中的“使用 cat 生成文档”段落，那里提供可以直接粘贴到终端的一键脚本。
-- **推荐用法**：
-  1. 先阅读“现状诊断”“细化需求”，理解 ScenarioAgent/TaskAgent 当前缺口。
-2. 按照“落地开发指南”逐条创建 issue 或分配子任务。
-3. 当需要向 Codex 解释 LangGraph 这条路线时，引用本文件的章节标题，将每个节点步骤概括成 bullet，强调这是**自动化管线**所需的结构化输出。
+- **这份文档做什么**：聚焦 LangGraph 自动化路线，分解 ScenarioAgent/TaskAgent 的节点职责与落地 checklist。如果你在推进 Codex 补丁路线，请改看 `task_generation_prompt_guidelines.md`。
+- **如何获取内容**：常规情况下直接打开本文件即可；若终端提示文件缺失，请参考 `doc_sync_quickstart.md` 的“文档角色速览”和“一键生成脚本”。
+- **阅读顺序建议**：先看“现状诊断”和“需求合理性评估”了解缺口，再按“落地开发指南”逐项拆分任务。
 
-> 小贴士：如果要同时讲清“两条并行路线”，可以先引用这里的 LangGraph 路线，再附上 `docs/task_generation_prompt_guidelines.md` 中“Prompt 模板”，明确 LangGraph 负责数据流，Codex 负责模板化补丁。
+> 与 Codex 路线配套时，只需把这里的 LangGraph 步骤总结成 bullet，再附上提示词文档中的模板，让模型或同事清楚两条路线分别负责**自动化管线**与**手工补丁**。
 
 > FAQ：ScenarioAgent 可以在节点里访问仓库文件吗？可以。LangGraph 节点就是普通的 Python 函数，你可以在其中使用 `pathlib.Path`/`os` 等库去读取 `VLABench/assets/`、`VLABench/configs/` 里的文件，只需确保在节点返回的新状态里写入（或缓存）你需要的结果。
 

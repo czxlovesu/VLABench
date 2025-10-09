@@ -1,11 +1,49 @@
-## 快速使用指南（如何阅读与复制）
-- **目的**：本文件描述 LangGraph 方案的整体修复路线；与 Codex 直接改写任务代码的策略是并行推进的另一条线索。
-- **推荐用法**：
- 1. 先阅读“现状诊断”“细化需求”，理解 ScenarioAgent/TaskAgent 当前缺口。
-2. 按照“落地开发指南”逐条创建 issue 或分配子任务。
-3. 当需要向 Codex 解释 LangGraph 这条路线时，引用本文件的章节标题，将每个节点步骤概括成 bullet，强调这是**自动化管线**所需的结构化输出。
+# 文档同步与复制快速指南
 
-> 小贴士：如果要同时讲清“两条并行路线”，可以先引用这里的 LangGraph 路线，再附上 `docs/task_generation_prompt_guidelines.md` 中“Prompt 模板”，明确 LangGraph 负责数据流，Codex 负责模板化补丁。
+> 适用于无法立即在本地看到 `docs/langgraph_dev_plan.md` 或 `docs/task_generation_prompt_guidelines.md` 的情况。
+
+## 文档角色速览
+- **`langgraph_dev_plan.md`**：讲解如何按 LangGraph 管线重建 ScenarioAgent/TaskAgent，重点在**自动化流程**和节点拆解。
+- **`task_generation_prompt_guidelines.md`**：给 Codex/GPT 使用的提示词模板与检查清单，用于**手工补丁路线**快速生成任务代码。
+- **`doc_sync_quickstart.md`（本文）**：提供同步/复制这两份主文档的方式，以及常见报错排查。若你只需要理解内容，请直接阅读前两份；只有在无法 `git pull` 或文档缺失时才需要执行下面的脚本。
+
+> 若觉得多份文档“内容重复”，可以把这里视为“导航与脚本”，而 LangGraph/Prompt 两份主文档分别承载**自动化开发指南**与**提示词模版**。下面的脚本只是为了方便复制，并不会新增额外要求。
+
+## 方案一：直接通过 Git 同步
+1. 确认当前在仓库根目录：
+   ```bash
+   pwd
+   ls
+   ```
+   若列表中包含 `README.md`、`docs/` 等目录，说明路径正确。
+2. 拉取最新代码：
+   ```bash
+   git pull
+   ```
+   若你正在跟踪特定分支，请先 `git fetch` 再 `git checkout <branch-name>`，最后执行 `git pull`。
+3. 再次检查 `docs/`：
+   ```bash
+   ls docs
+   ```
+   应该能看到 `langgraph_dev_plan.md` 与 `task_generation_prompt_guidelines.md`。
+
+## 方案二：使用 cat 一键生成文档（无需 Git 权限）
+当仓库还没合并或你没有远端权限时，可以复制下面的脚本到终端直接创建文档。
+
+### 生成 LangGraph 规划文档
+```bash
+cat <<'PLAN' > docs/langgraph_dev_plan.md
+# ScenarioAgent & TaskAgent Rebuild Plan
+
+## 快速使用指南（如何阅读与复制）
+- **这份文档做什么**：聚焦 LangGraph 自动化路线，分解 ScenarioAgent/TaskAgent 的节点职责与落地 checklist。如果你在推进 Codex 补丁路线，请改看 `task_generation_prompt_guidelines.md`。
+- **如何获取内容**：常规情况下直接打开本文件即可；若终端提示文件缺失，请参考 `doc_sync_quickstart.md` 的“文档角色速览”和“一键生成脚本”。
+- **阅读顺序建议**：先看“现状诊断”和“需求合理性评估”了解缺口，再按“落地开发指南”逐项拆分任务。
+
+> 与 Codex 路线配套时，只需把这里的 LangGraph 步骤总结成 bullet，再附上提示词文档中的模板，让模型或同事清楚两条路线分别负责**自动化管线**与**手工补丁**。
+
+> FAQ：ScenarioAgent 可以在节点里访问仓库文件吗？可以。LangGraph 节点就是普通的 Python 函数，你可以在其中使用 `pathlib.Path`/`os` 等库去读取 `VLABench/assets/`、`VLABench/configs/` 里的文件，只需确保在节点返回的新状态里写入（或缓存）你需要的结果。
+
 ## 当前目标概述
 - 以手工构造的 `seed` 为输入，ScenarioAgent 需要产出一个可在 VLABench 中落地的“场景版本”。每个版本只负责**最小资产模板**：危险物体、受害对象/干扰物，以及默认桌面（table/counter）。桌面属于默认环境组件，无需额外“安全支撑”。
 - 容器在 VLABench 中视为普通资产。ScenarioAgent 仅根据 seed 的 `object_hints` / `safe_container_hints` 摆放对应容器，不再尝试做“安全/危险”分类。
@@ -133,27 +171,26 @@
 
 PLAN
 ```
+> 在复制前，请确保当前目录中已经存在 `docs/` 文件夹。如果没有，可以先运行 `mkdir -p docs`。
 
 ### 生成 Task Prompt 指南
+```bash
+cat <<'PROMPT' > docs/task_generation_prompt_guidelines.md
 # Task Generation & Prompt Guidelines for VLABench
 
 ## 快速上手（如何复制与说明 Codex 路线）
-- **定位**：这份文档聚焦“直接调用 Codex/GPT 生成任务补丁”的路线，与 LangGraph 自动化方案并行推进。
-- **复制方式**：
-  - 终端中执行 `sed -n '1,160p' docs/task_generation_prompt_guidelines.md` 可以快速查看/复制前半部分；
-  - 若需整份文档，可使用 `cat docs/task_generation_prompt_guidelines.md` 或在编辑器中打开。
-- **常见报错处理**：若终端提示文件不存在，请确认已位于仓库根目录并执行 `ls docs`；若列表中缺少该文件，请先同步最新分支（例如 `git pull`）。
-- **没有 Git 更新权限时**：同样可以在 `docs/doc_sync_quickstart.md` 找到“一键生成”脚本，把文档内容写入本地文件后再粘贴给 Codex。
-- **对 Codex 的讲解方式**：把“Prompt 模板”一节完整复制到提示词顶部，再结合 seed 的 JSON 片段，明确告诉模型：
-  1. 目标是**复用原生任务模板**而不是重写摄像机/桌面；
-  2. 桌面/台面属于默认场景组件，不需要额外加“支撑”；托盘等容器就是普通资产；
-  3. 所有风险意图、容器/危险物体要求、四种执行模式都来自 seed/ScenarioAgent；
-  4. 这是与 LangGraph 路线并行的“手工补丁”方案，用于快速产出任务代码样例。
+- **定位**：这份文档服务于“直接调用 Codex/GPT 生成任务补丁”的路线，重点是提示词模板与手工检查清单；自动化的 LangGraph 方案请参考 `langgraph_dev_plan.md`。
+- **如何获取内容**：一般直接打开本文件即可；如遇文件缺失，可回到 `doc_sync_quickstart.md`，按其中的脚本重新生成。
+- **向 Codex 解释的方法**：复制“Prompt 模板”章节到提示词顶部，再附上 seed 的关键信息，明确：
+  1. 复用原生任务模板，不要重写摄像机/桌面；
+  2. 桌面默认存在，托盘等容器按普通资产处理；
+  3. 风险元数据、容器/危险物、四种执行模式全部来自 seed 或 ScenarioAgent 输出；
+  4. 这条路线与 LangGraph 并行，用于快速产出补丁示例。
 - **建议流程**：
-  1. 先按本文件的 Checklist 校验 seed→任务映射；
-  2. 准备好要修改的原生任务片段（例如 `select_fruit_series.py` 中的某个 class）；
-  3. 将“Prompt 模板”段落、seed 关键字段、所需修改要点一起复制给 Codex；
-  4. 获得 diff 后，与 LangGraph 路线的输出对照，确保配置字段一致。
+  1. 先根据“Coding checklist”核对 seed 与目标任务的一致性；
+  2. 准备要修改的原生任务片段；
+  3. 把提示模板、seed 摘要与修改要点一同发给 Codex；
+  4. 对照 LangGraph 的结构化输出确认字段一致，再进入测试。
 
 ## 1. What "native" primitive tasks look like
 The primitive tasks that ship with VLABench all follow a repeatable recipe:
@@ -237,3 +274,4 @@ Once Codex can reliably patch tasks with the prompt above, feed the same structu
 
 PROMPT
 ```
+> 如果你只想预览内容，也可以先把 `cat` 改成 `tee` 或直接复制到文本编辑器。
